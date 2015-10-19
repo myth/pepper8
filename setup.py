@@ -48,6 +48,6 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     entry_points={
-        'console_scripts': ['pepper8 = pepper8.pepper8:main', ],
+        'console_scripts': ['pepper8=pepper8.pepper8:main']
     }
 )

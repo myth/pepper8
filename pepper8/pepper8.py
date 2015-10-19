@@ -65,7 +65,3 @@ def main():
     # Generate the HTML report to output_file if not None, else print to stdout
     generator = HtmlGenerator(fileparser)
     generator.generate(output_file=args.output_file)
-
-
-if __name__ == '__main__':
-    main()

@@ -2,10 +2,10 @@
 
 *.pyc
 __pycache__
+*.egg-info/
 
 # IDE / Editor
 .idea
-
 
 # Logs
 *.log

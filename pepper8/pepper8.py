@@ -11,8 +11,7 @@ from generator import HtmlGenerator
 from parser import Parser
 
 
-if __name__ == '__main__':
-
+def main():
     fileparser = None
     argparser = argparse.ArgumentParser(
         description='Convert pep8 output to HTML',
@@ -43,7 +42,6 @@ if __name__ == '__main__':
     args = argparser.parse_args()
 
     if args.filename:
-        filemode = True
         try:
             f = open(args.filename, encoding='utf8')
             fileparser = Parser(f)
@@ -67,3 +65,7 @@ if __name__ == '__main__':
     # Generate the HTML report to output_file if not None, else print to stdout
     generator = HtmlGenerator(fileparser)
     generator.generate(output_file=args.output_file)
+
+
+if __name__ == '__main__':
+    main()

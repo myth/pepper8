@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PEP 8 Report</title>
+</head>
+<body>
+{% for file in files %}
+<table class="file">
+    <thead>
+    <tr>
+        <th>Line</th>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for code, line, pos, description in file.lines %}
+    <tr>
+        <td>{{ line }}:{{ pos }}</td>
+        <td>{{ code }}</td>
+        <td>{{ description }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+</body>
+</html>

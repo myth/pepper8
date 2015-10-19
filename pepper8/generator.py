@@ -2,6 +2,7 @@
 #
 # Created by 'myth' on 10/19/15
 
+import codecs
 import os
 from sys import stdout, stderr
 
@@ -47,7 +48,7 @@ class HtmlGenerator(object):
             fd = stdout
         else:
             try:
-                fd = open(output_file, 'w', encoding='utf8')
+                fd = codecs.open(output_file, 'w', encoding='utf8')
             except IOError as e:
                 stderr.write('Unable to open outputfile %s: %s' % (output_file, e))
 

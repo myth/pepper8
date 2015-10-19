@@ -3,7 +3,7 @@
 # Created by 'myth' on 10/19/15
 
 import os
-from sys import stdout, stderr
+from sys import stdout
 
 from jinja2 import Template
 
@@ -29,7 +29,7 @@ class HtmlGenerator(object):
 
         super(HtmlGenerator, self).__init__()
         self.parser = parser
-        self.files = []
+        self.files = {}
         self.total_errors = 0
         self.total_warnings = 0
         self.violations = {}
@@ -46,28 +46,39 @@ class HtmlGenerator(object):
         if not fd:
             fd = stdout
 
-        file_result = None
+        fr = None
         for path, code, line, char, desc in self.parser.parse():
             # Create a new FileResult and register it if we have changed to a new file
-            if not file_result:
-                file_result = FileResult(path)
-            if file_result.path != path:
-                self.update_stats(file_result)
-                file_result = FileResult(path)
-                self.files.append(file_result)
+            if path not in self.files:
+                # Update statistics
+                if fr:
+                    self.update_stats(fr)
+                fr = FileResult(path)
+                self.files[path] = fr
 
-            file_result.add_error(code, line, char, desc)
+            # Add line to the FileResult
+            fr.add_error(code, line, char, desc)
 
         with open(os.path.join(os.path.dirname(__file__), 'templates/base.html')) as template:
             html = Template(template.read())
 
+            # Write potential build messages to stdout if we are writing to HTML file
+            # If dest is stdout and supposed to be piped or redirected, build messages like TeamCity's will
+            # have no effect, since they require to read from stdin.
+            if output_file:
+                self.report_build_messages()
+
             # Write our rendered template to the file descriptor
             fd.write(
                 html.render(
-                    files=self.files,
+                    files=sorted(self.files.values(), key=lambda x: x.path),
                     total_warnings=self.total_warnings,
                     total_errors=self.total_errors,
-                    violations=sorted(self.violations, key=self.violations.get, reverse=True)
+                    violations=sorted(
+                        ((code, count) for code, count in self.violations.items()),
+                        key=lambda x: x[1],
+                        reverse=True
+                    )
                 )
             )
 
@@ -86,10 +97,28 @@ class HtmlGenerator(object):
         for code, count in file_result.violations.items():
             if code not in self.violations:
                 self.violations[code] = 0
-
-            self.violations[code] += 1
+            self.violations[code] += file_result.violations[code]
 
             if 'W' in code.upper():
                 self.total_warnings += 1
             else:
                 self.total_errors += 1
+
+    def report_build_messages(self):
+        """
+        Checks environment variables to see whether pepper8 is run under a build agent such as TeamCity
+        and performs the adequate actions to report statistics.
+
+        Will not perform any action if HTML output is written to OUTPUT_FILE and not stdout.
+        Currently only supports TeamCity.
+
+        :return: A list of build message strings destined for stdout
+        """
+
+        if os.getenv('TEAMCITY_VERSION'):
+            tc_build_message_warning = "##teamcity[buildStatisticValue key='pepper8warnings' value='{}']\n"
+            tc_build_message_error = "##teamcity[buildStatisticValue key='pepper8errors' value='{}']\n"
+
+            stdout.write(tc_build_message_warning.format(self.total_warnings))
+            stdout.write(tc_build_message_error.format(self.total_errors))
+            stdout.flush()

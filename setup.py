@@ -46,5 +46,8 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
-    ]
+    ],
+    entry_points={
+        'console_scripts': ['pepper8 = pepper8.pepper8:main']
+    }
 )

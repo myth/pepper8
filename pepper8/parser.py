@@ -39,16 +39,12 @@ class Parser(object):
                 path, line, char = path.split(':')[:3]
 
                 if not re.match(POSITION, line):
-                    print(line)
                     continue
                 if not re.match(POSITION, char):
-                    print(char)
                     continue
                 if not re.match(ERROR_CODE, code):
-                    print(code)
                     continue
                 if not re.match(FILEPATH, path):
-                    print(path)
                     continue
 
             except IndexError:

@@ -3,27 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <title>PEP 8 Report</title>
+    <style type="text/css">
+        /* BEGIN CSS RESET */
+
+        /* http://meyerweb.com/eric/tools/css/reset/
+           v2.0 | 20110126
+           License: none (public domain)
+        */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        dl, dt, dd, ul, ol, li, u, i, center,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            box-sizing: border-box;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ul {
+            list-style: none;
+        }
+        ol {
+            padding-left: 15px;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+
+        /* END CSS RESET */
+
+        html, body {
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', 'Open Sans', sans-serif;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            color: #223366;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 1.25em;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        tr, th, td {
+            margin: 0px;
+            padding: 0px;
+        }
+        table {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        table > thead > tr > th {
+            padding: 15px 5px 15px 5px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #666;
+        }
+        table > tbody > tr > td {
+            padding: 5px;
+        }
+        table > tbody > tr:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+        table > tbody > tr:nth-child(odd) {
+            background-color: #fcfcfc;
+        }
+        .fill {
+            width: 100%;
+        }
+        .left {
+            width: 80%;
+            float: left;
+        }
+        .right {
+            width: 20%;
+            float: right;
+            padding-left: 25px;
+        }
+        .center {
+            margin: 0 auto;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-left {
+            text-align: left;
+        }
+        #build-messages {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-{% for file in files %}
-<table class="file">
-    <thead>
-    <tr>
-        <th>Line</th>
-        <th>Code</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for code, line, pos, description in file.lines %}
-    <tr>
-        <td>{{ line }}:{{ pos }}</td>
-        <td>{{ code }}</td>
-        <td>{{ description }}</td>
-    </tr>
+<h1>PEP 8 Report</h1>
+<div class="left">
+    {% for file in files %}
+    <h2 class="file-path">{{ file.path }}</h2>
+    <table class="fill">
+        <thead>
+        <tr>
+            <th class="text-left">Line</th>
+            <th class="text-left">Code</th>
+            <th class="text-left">Pos</th>
+            <th class="text-left">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for code, line, pos, description in file.lines %}
+        <tr>
+            <td>{{ line }}</td>
+            <td><a href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></td>
+            <td>{{ pos }}</td>
+            <td>{{ description }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% endfor %}
-    </tbody>
-</table>
-{% endfor %}
+</div>
+<aside class="right">
+    <h2>Statistics</h2>
+    <ol>
+        {% for code, count in violations %}
+        <li><b><a href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></b>: {{ count }}</li>
+        {% endfor %}
+    </ol>
+</aside>
 </body>
 </html>

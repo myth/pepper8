@@ -1,0 +1,11 @@
+# Python
+
+*.pyc
+__pycache__
+
+# IDE / Editor
+.idea
+
+
+# Logs
+*.log

@@ -3,7 +3,7 @@
 # Created by 'myth' on 10/19/15
 
 import os
-from sys import stdout
+from sys import stdout, stderr
 
 from jinja2 import Template
 
@@ -45,6 +45,11 @@ class HtmlGenerator(object):
         # Write to stdout if we do not have a file to write to
         if not fd:
             fd = stdout
+        else:
+            try:
+                fd = open(output_file, 'w', encoding='utf8')
+            except IOError as e:
+                stderr.write('Unable to open outputfile %s: %s' % (output_file, e))
 
         fr = None
         for path, code, line, char, desc in self.parser.parse():

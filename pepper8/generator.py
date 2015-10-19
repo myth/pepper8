@@ -106,9 +106,9 @@ class HtmlGenerator(object):
             self.violations[code] += file_result.violations[code]
 
             if 'W' in code.upper():
-                self.total_warnings += 1
+                self.total_warnings += file_result.violations[code]
             else:
-                self.total_errors += 1
+                self.total_errors += file_result.violations[code]
 
     def report_build_messages(self):
         """

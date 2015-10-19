@@ -69,6 +69,7 @@
             margin-bottom: 30px;
             color: #223366;
             font-weight: bold;
+            vertical-align: middle;
         }
         h2 {
             font-size: 1.5em;
@@ -79,6 +80,11 @@
             font-size: 1.25em;
             margin-top: 10px;
             margin-bottom: 10px;
+        }
+        small {
+            font-size: 75%;
+            font-weight: normal;
+            vertical-align: middle;
         }
         tr, th, td {
             margin: 0px;
@@ -136,7 +142,7 @@
     </style>
 </head>
 <body>
-<h1>PEP 8 Report</h1>
+<h1>PEP 8 Report <small>(Errors: {{ total_errors }}, Warnings: {{ total_warnings }})</small></h1>
 <div class="left">
     {% for file in files %}
     <h2 class="file-path">{{ file.path }}</h2>

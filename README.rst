@@ -62,7 +62,11 @@ Pepper8 PEP 8 HTML Report
     :align: center
 
 
+
+
 TeamCity custom chart data using custom buildStatistics messages if run under TeamCity
+
+
 
 
 .. image:: https://cloud.githubusercontent.com/assets/2415878/10596726/7a2f43aa-76e7-11e5-8833-429197b45025.png

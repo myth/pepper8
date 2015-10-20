@@ -29,6 +29,13 @@ To read pep8 / flake8 status reports from file use
     pepper8 -o report.html <filename>
 
 
+or you can pipe output from another file or process
+
+.. code:: bash
+
+    cat flake8.out | pepper8 > report.html
+
+
 If no output file is specified with ``-o``, the HTML report is written to stdout, allowing
 output redirection or piping
 

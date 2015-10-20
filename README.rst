@@ -54,7 +54,7 @@ custom build report graphs in addition to the HTML report.
 
 
 .. |requirements| image:: https://requires.io/github/myth/pepper8/requirements.png?branch=master
-    :target: https://requires.io/github/Bachmann1234/myth/requirements/?branch=master
+    :target: https://requires.io/github/myth/requirements/?branch=master
     :alt: Requirements Status
 .. |version| image:: https://pypip.in/version/pepper8/badge.svg
     :target: https://pypi.python.org/pypi/pepper8/

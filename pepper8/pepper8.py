@@ -17,16 +17,16 @@ def main(arguments=None):
 
     fileparser = None
     argparser = argparse.ArgumentParser(
-        description='Convert pep8 output to HTML',
+        description='Convert pep8 or flake8 output to HTML',
         prog='pepper8',
-        epilog='pepper8 ccepts input either from stdin or from a filename argument.\n' +
+        epilog='pepper8 accepts input either from stdin or from a filename argument.\n' +
                'Unless specified otherwise with -o OUTPUT_FILE, pepper8 outputs to stdout.'
     )
     argparser.add_argument(
         'filename',
         nargs='?',
         type=str,
-        help='Path to file containing pep8 results.'
+        help='Path to file containing pep8 or flake8 results.'
     )
     argparser.add_argument(
         '-v',

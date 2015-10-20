@@ -36,7 +36,7 @@ and print out available build statistics to stdout.
 Currently, only TeamCity build statistics are supported with keys `pepper8warnings` and `pepper8errors`.
 
 If you wish to enable full parsing of all PEP 8 / Flake8 errors as failures in TeamCity,
-there already exists a package called ![TeamCity-Messages](https://github.com/JetBrains/teamcity-messages)
+there already exists a package called [TeamCity-Messages](https://github.com/JetBrains/teamcity-messages)
 which will be treated as build errors in TeamCity.
 
 The TeamCity build statistics provided by pepper8 is only intended to provide statistical data for use in

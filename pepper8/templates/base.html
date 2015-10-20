@@ -159,7 +159,7 @@
         {% for code, line, pos, description in file.lines %}
         <tr>
             <td>{{ line }}</td>
-            <td><a href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></td>
+            <td><a target="_blank" href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></td>
             <td>{{ pos }}</td>
             <td>{{ description }}</td>
         </tr>
@@ -172,7 +172,7 @@
     <h2>Statistics</h2>
     <ol>
         {% for code, count in violations %}
-        <li><b><a href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></b>: {{ count }}</li>
+        <li><b><a target="_blank" href="http://flake8.readthedocs.org/en/latest/warnings.html">{{ code }}</a></b>: {{ count }}</li>
         {% endfor %}
     </ol>
 </aside>

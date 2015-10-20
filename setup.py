@@ -3,7 +3,7 @@
 import os
 import sys
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 
 try:
     from setuptools import setup
@@ -19,6 +19,8 @@ if sys.argv[-1] == 'publish':
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 with open('README.rst') as r:
     readme = r.read()
+with open('CHANGELOG.rst') as c:
+    changelog = c.read()
 
 # Dependencies
 requires = [
@@ -29,7 +31,7 @@ setup(
     name='pepper8',
     version=__version__,
     description='Transforms pep8 or flake8 output into an HTML report.',
-    long_description=readme,
+    long_description=readme + ' ' + changelog,
     author="Aleksander 'myth' Skraastad'",
     author_email='myth@overflow.no',
     packages=['pepper8'],

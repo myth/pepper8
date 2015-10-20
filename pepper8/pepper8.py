@@ -5,13 +5,16 @@
 import argparse
 from os import fstat
 from stat import S_ISFIFO, S_ISREG
-from sys import stdin, stderr, exit
+from sys import stdin, stderr, exit, argv
 
 from generator import HtmlGenerator
 from parser import Parser
 
 
-def main():
+def main(args=None):
+
+    args = args or argv
+
     fileparser = None
     argparser = argparse.ArgumentParser(
         description='Convert pep8 output to HTML',
@@ -39,7 +42,7 @@ def main():
     )
 
     # Fetch the provided arguments from sys.argv
-    args = argparser.parse_args()
+    args = argparser.parse_args(args)
 
     if args.filename:
         try:
@@ -65,3 +68,6 @@ def main():
     # Generate the HTML report to output_file if not None, else print to stdout
     generator = HtmlGenerator(fileparser)
     generator.generate(output_file=args.output_file)
+
+if __name__ == '__main__':
+    main()

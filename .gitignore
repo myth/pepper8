@@ -3,6 +3,7 @@
 *.pyc
 __pycache__
 *.egg-info/
+dist/
 
 # IDE / Editor
 .idea

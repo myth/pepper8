@@ -1,5 +1,6 @@
 # -*- coding: utf-8
 
+import codecs
 import os
 import sys
 
@@ -17,7 +18,7 @@ if sys.argv[-1] == 'publish':
 
 # Allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-with open('README.rst', encoding='utf-8') as r:
+with codecs.open('README.rst', encoding='utf-8') as r:
     readme = r.read()
 
 # Dependencies
@@ -48,6 +49,6 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     entry_points={
-        'console_scripts': ['pepper8=pepper8.pepper8:main']
+        'console_scripts': ['pepper8 = pepper8.pepper8:main']
     }
 )

@@ -17,7 +17,7 @@ if sys.argv[-1] == 'publish':
 
 # Allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-with open('README.md') as r:
+with open('README.rst') as r:
     readme = r.read()
 
 # Dependencies

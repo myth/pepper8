@@ -15,7 +15,7 @@ Or you can clone the latest master branch and build using setuptools
 
 .. code:: bash
 
-    git clone git@github.com:myth/pepper8.git && python setup.py install
+    git clone git@github.com:myth/pepper8.git && cd pepper8 && python setup.py install
 
 
 Usage
@@ -52,3 +52,25 @@ which will be treated as build errors in TeamCity.
 The TeamCity build statistics provided by pepper8 is only intended to provide statistical data for use in
 custom build report graphs in addition to the HTML report.
 
+Screenshots from TeamCity integration
+-------------------------------------
+Pepper8 PEP 8 HTML Report
+
+
+.. image:: https://cloud.githubusercontent.com/assets/2415878/10596725/7a2d17a6-76e7-11e5-8630-3e8bd4803a30.png
+    :alt: Pepper8 PEP 8 HTML Report
+    :align: center
+
+
+
+
+TeamCity custom chart data using custom buildStatistics messages if run under TeamCity
+
+
+
+
+.. image:: https://cloud.githubusercontent.com/assets/2415878/10596726/7a2f43aa-76e7-11e5-8833-429197b45025.png
+    :alt: Custom TeamCity Flake8/PEP8 Warning/Error build metrics
+    :align: center
+    
+    

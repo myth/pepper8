@@ -15,7 +15,7 @@ Or you can clone the latest master branch and build using setuptools
 
 .. code:: bash
 
-    git clone git@github.com:myth/pepper8.git && python setup.py install
+    git clone git@github.com:myth/pepper8.git && cd pepper8 && python setup.py install
 
 
 Usage

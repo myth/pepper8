@@ -7,12 +7,16 @@ ____________
 To install pepper8, simply use pip.
 
 .. code:: bash
+
     pip install pepper8
+
 
 Or you can clone the latest master branch and build using setuptools
 
 .. code:: bash
+
     git clone git@github.com:myth/pepper8.git && python setup.py install
+
 
 Usage
 -----
@@ -21,13 +25,17 @@ pepper8 operates in two different input modes and two different output modes.
 To read pep8 / flake8 status reports from file use
 
 .. code:: bash
+
     pepper8 -o report.html <filename>
+
 
 If no output file is specified with ``-o``, the HTML report is written to stdout, allowing
 output redirection or piping
 
 .. code:: bash
+
     pepper8 <filename> | grep W301 > report.html
+
 
 Build statistics
 ----------------

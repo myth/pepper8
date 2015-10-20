@@ -1,8 +1,8 @@
-Pepper8 - Transform pep8 or flake8 output to HTML
-=================================================
+pepper8 |requirements-status| |version|
+=======================================
 
-Installation
-____________
+Transform pep8 or flake8 output to HTML
+---------------------------------------
 
 To install pepper8, simply use pip.
 
@@ -51,3 +51,10 @@ which will be treated as build errors in TeamCity.
 
 The TeamCity build statistics provided by pepper8 is only intended to provide statistical data for use in
 custom build report graphs in addition to the HTML report.
+
+.. requirements-status image:: https://requires.io/github/myth/pepper8/requirements.png?branch=master
+    :target: https://requires.io/github/Bachmann1234/myth/requirements/?branch=master
+    :alt: Requirements Status
+.. version:: https://pypip.in/version/pepper8/badge.svg
+    :target: https://pypi.python.org/pypi/pepper8/
+    :alt: Latest Version

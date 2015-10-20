@@ -11,9 +11,9 @@ from generator import HtmlGenerator
 from parser import Parser
 
 
-def main(args=None):
+def main(arguments=None):
 
-    args = args or argv
+    args = arguments or argv
 
     fileparser = None
     argparser = argparse.ArgumentParser(
@@ -42,7 +42,7 @@ def main(args=None):
     )
 
     # Fetch the provided arguments from sys.argv
-    args = argparser.parse_args(args)
+    args = argparser.parse_args()
 
     if args.filename:
         try:
@@ -56,7 +56,7 @@ def main(args=None):
     else:
         # We need to check if stdin is piped or read from file, since we dont want
         # stdin to hang at terminal input
-        mode = fstat(stdin.fileno()).st_mode
+        mode = fstat(0).st_mode
 
         if S_ISFIFO(mode) or S_ISREG(mode):
             fileparser = Parser(stdin)

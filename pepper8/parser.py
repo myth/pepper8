@@ -47,7 +47,11 @@ class Parser(object):
                 if not re.match(FILEPATH, path):
                     continue
 
+            # For parts mismatch
             except IndexError:
+                continue
+            # For unpack mismatch
+            except ValueError:
                 continue
 
             yield path, code, line, char, ' '.join(parts[2:])

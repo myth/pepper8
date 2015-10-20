@@ -46,7 +46,7 @@ def main(args=None):
 
     if args.filename:
         try:
-            f = open(args.filename, encoding='utf8')
+            f = open(args.filename)
             fileparser = Parser(f)
         except IOError as e:
             stderr.write('Could not open file: %s' % e)

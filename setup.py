@@ -1,6 +1,5 @@
 # -*- coding: utf-8
 
-import codecs
 import os
 import sys
 
@@ -18,7 +17,7 @@ if sys.argv[-1] == 'publish':
 
 # Allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
-with codecs.open('README.rst', encoding='utf-8') as r:
+with open('README.rst') as r:
     readme = r.read()
 
 # Dependencies
@@ -30,7 +29,7 @@ setup(
     name='pepper8',
     version=__version__,
     description='Transforms pep8 or flake8 output into an HTML report.',
-    long_description=r,
+    long_description=readme,
     author="Aleksander 'myth' Skraastad'",
     author_email='myth@overflow.no',
     packages=['pepper8'],

@@ -1,5 +1,5 @@
-pepper8 |requirements| |version|
-================================
+pepper8 |version|
+=================
 
 Transform pep8 or flake8 output to HTML
 ---------------------------------------
@@ -53,9 +53,6 @@ The TeamCity build statistics provided by pepper8 is only intended to provide st
 custom build report graphs in addition to the HTML report.
 
 
-.. |requirements| image:: https://requires.io/github/myth/pepper8/requirements.png?branch=master
-    :target: https://requires.io/github/myth/requirements/?branch=master
-    :alt: Requirements Status
 .. |version| image:: https://pypip.in/py_versions/pepper8/badge.svg
     :target: https://pypi.python.org/pypi/pepper8/
     :alt: Latest Version

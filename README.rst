@@ -1,5 +1,5 @@
-pepper8 |version|
-=================
+pepper8
+=======
 
 Transform pep8 or flake8 output to HTML
 ---------------------------------------
@@ -52,7 +52,3 @@ which will be treated as build errors in TeamCity.
 The TeamCity build statistics provided by pepper8 is only intended to provide statistical data for use in
 custom build report graphs in addition to the HTML report.
 
-
-.. |version| image:: https://pypip.in/py_versions/pepper8/badge.svg
-    :target: https://pypi.python.org/pypi/pepper8/
-    :alt: Latest Version

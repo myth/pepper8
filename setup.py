@@ -36,7 +36,7 @@ setup(
     license='MIT License',
     install_requires=requires,
     url='https://github.com/myth/pepper8',
-    include_package_details=True,
+    package_data={'pepper8': ['templates/*.html']},
     classifiers=[
         'Development status :: 4 - Beta',
         'Intended Audience :: Developers',

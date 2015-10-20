@@ -38,10 +38,8 @@ setup(
     url='https://github.com/myth/pepper8',
     package_data={'pepper8': ['templates/*.html']},
     classifiers=[
-        'Development status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'Licence :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

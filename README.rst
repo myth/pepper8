@@ -34,7 +34,7 @@ output redirection or piping
 
 .. code:: bash
 
-    pepper8 <filename> | grep W301 > report.html
+    pepper8 <filename> | less
 
 
 Build statistics

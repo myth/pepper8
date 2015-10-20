@@ -1,5 +1,6 @@
 flake8
 wheel
+twine
 pytest
 pytest-cov
 Jinja2>=2.7.1

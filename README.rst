@@ -88,6 +88,11 @@ TeamCity custom chart data using custom buildStatistics messages if run under Te
 Changelog
 =========
 
+1.0.4
+-----
+Fixed a Python 2 and 3 compatibility issue.
+Added changelog to README.
+
 1.0.3
 -----
 Fixed a bug causing missed statistics for last file.

@@ -7,8 +7,10 @@ from os import fstat
 from stat import S_ISFIFO, S_ISREG
 from sys import stdin, stderr, exit, argv
 
-from generator import HtmlGenerator
-from parser import Parser
+from pepper8.generator import HtmlGenerator
+from pepper8.parser import Parser
+
+VERSION = '1.0.4'
 
 
 def main(arguments=None):
@@ -35,6 +37,11 @@ def main(arguments=None):
         help='Enable verbose output (only if --output-file is specified)'
     )
     argparser.add_argument(
+        '--version',
+        action='store_true',
+        help='Prints pepper8 version and exists'
+    )
+    argparser.add_argument(
         '-o',
         '--output-file',
         type=str,
@@ -43,6 +50,9 @@ def main(arguments=None):
 
     # Fetch the provided arguments from sys.argv
     args = argparser.parse_args(args)
+    if args.version:
+        print('Pepper8 version %s' % VERSION)
+        exit(0)
 
     if args.filename:
         try:

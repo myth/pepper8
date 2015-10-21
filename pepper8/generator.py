@@ -7,8 +7,8 @@ from sys import stdout, stderr
 
 from jinja2 import Template
 
-from models import FileResult
-from parser import Parser
+from pepper8.models import FileResult
+from pepper8.parser import Parser
 
 
 class HtmlGenerator(object):

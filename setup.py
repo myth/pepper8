@@ -3,7 +3,9 @@
 import os
 import sys
 
-__version__ = '1.0.3'
+from pepper8.main import VERSION
+
+__version__ = VERSION
 
 try:
     from setuptools import setup
@@ -19,8 +21,6 @@ if sys.argv[-1] == 'publish':
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 with open('README.rst') as r:
     readme = r.read()
-with open('CHANGELOG.rst') as c:
-    changelog = c.read()
 
 # Dependencies
 requires = [
@@ -31,7 +31,7 @@ setup(
     name='pepper8',
     version=__version__,
     description='Transforms pep8 or flake8 output into an HTML report.',
-    long_description=readme + '\n\n' + changelog,
+    long_description=readme,
     author="Aleksander 'myth' Skraastad'",
     author_email='myth@overflow.no',
     packages=['pepper8'],
@@ -39,7 +39,6 @@ setup(
     install_requires=requires,
     url='https://github.com/myth/pepper8',
     package_data={
-        '': ['CHANGELOG.rst'],
         'pepper8': ['templates/*.html']
     },
     classifiers=[
@@ -51,6 +50,6 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
     entry_points={
-        'console_scripts': ['pepper8 = pepper8.pepper8:main']
+        'console_scripts': ['pepper8 = pepper8.main:main']
     }
 )

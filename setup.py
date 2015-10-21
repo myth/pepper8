@@ -3,7 +3,7 @@
 import os
 import sys
 
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 
 try:
     from setuptools import setup
@@ -31,14 +31,17 @@ setup(
     name='pepper8',
     version=__version__,
     description='Transforms pep8 or flake8 output into an HTML report.',
-    long_description=readme + ' ' + changelog,
+    long_description=readme + '\n\n' + changelog,
     author="Aleksander 'myth' Skraastad'",
     author_email='myth@overflow.no',
     packages=['pepper8'],
     license='MIT License',
     install_requires=requires,
     url='https://github.com/myth/pepper8',
-    package_data={'pepper8': ['templates/*.html']},
+    package_data={
+        '': ['CHANGELOG.rst'],
+        'pepper8': ['templates/*.html']
+    },
     classifiers=[
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',

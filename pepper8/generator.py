@@ -32,7 +32,37 @@ class HtmlGenerator(object):
         self.files = {}
         self.total_errors = 0
         self.total_warnings = 0
+        self.total_flakes = 0
+        self.total_naming = 0
+        self.total_complexity = 0
         self.violations = {}
+
+    def analyze(self, output_file=None):
+        """
+        Analyzes the parsed results from Flake8 or PEP 8 output and creates FileResult instances
+        :param output_file: If specified, output will be written to this file instead of stdout.
+        """
+
+        fr = None
+        for path, code, line, char, desc in self.parser.parse():
+
+            # Create a new FileResult and register it if we have changed to a new file
+            if path not in self.files:
+                # Update statistics
+                if fr:
+                    self.update_stats(fr)
+                fr = FileResult(path)
+                self.files[path] = fr
+
+            # Add line to the FileResult
+            fr.add_error(code, line, char, desc)
+
+        # Add final FileResult to statistics, if any were parsed
+        if fr:
+            self.update_stats(fr)
+
+        # Generate HTML file
+        self.generate(output_file=output_file)
 
     def generate(self, output_file=None):
         """
@@ -51,19 +81,6 @@ class HtmlGenerator(object):
             except IOError as e:
                 stderr.write('Unable to open outputfile %s: %s' % (output_file, e))
 
-        fr = None
-        for path, code, line, char, desc in self.parser.parse():
-            # Create a new FileResult and register it if we have changed to a new file
-            if path not in self.files:
-                # Update statistics
-                if fr:
-                    self.update_stats(fr)
-                fr = FileResult(path)
-                self.files[path] = fr
-
-            # Add line to the FileResult
-            fr.add_error(code, line, char, desc)
-
         with open(os.path.join(os.path.dirname(__file__), 'templates/base.html')) as template:
             html = Template(template.read())
 
@@ -79,6 +96,9 @@ class HtmlGenerator(object):
                     files=sorted(self.files.values(), key=lambda x: x.path),
                     total_warnings=self.total_warnings,
                     total_errors=self.total_errors,
+                    total_naming=self.total_naming,
+                    total_flakes=self.total_flakes,
+                    total_complexity=self.total_complexity,
                     violations=sorted(
                         ((code, count) for code, count in self.violations.items()),
                         key=lambda x: x[1],
@@ -104,10 +124,16 @@ class HtmlGenerator(object):
                 self.violations[code] = 0
             self.violations[code] += file_result.violations[code]
 
+            if 'E' in code.upper():
+                self.total_errors += file_result.violations[code]
             if 'W' in code.upper():
                 self.total_warnings += file_result.violations[code]
-            else:
-                self.total_errors += file_result.violations[code]
+            elif 'F' in code.upper():
+                self.total_flakes += file_result.violations[code]
+            elif 'N' in code.upper():
+                self.total_naming += file_result.violations[code]
+            elif 'C' in code.upper():
+                self.total_complexity += file_result.violations[code]
 
     def report_build_messages(self):
         """

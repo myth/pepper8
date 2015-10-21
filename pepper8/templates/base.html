@@ -81,10 +81,19 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        small {
-            font-size: 75%;
+        h1 > small {
+            font-size: 50%;
             font-weight: normal;
             vertical-align: middle;
+        }
+        a {
+            color: #536c97;
+        }
+        a:visited {
+            color: #536c97;
+        }
+        a:active, a:hover {
+            color: #7e99cf;
         }
         tr, th, td {
             margin: 0px;
@@ -142,7 +151,15 @@
     </style>
 </head>
 <body>
-<h1>PEP 8 Report <small>(Errors: {{ total_errors }}, Warnings: {{ total_warnings }})</small></h1>
+<h1>PEP 8 Report<br>
+    <small>
+        Errors: {{ total_errors }},
+        Warnings: {{ total_warnings }},
+        Flakes: {{ total_flakes }},
+        Naming: {{ total_naming }},
+        Complexity: {{ total_complexity }}
+    </small>
+</h1>
 <div class="left">
     {% for file in files %}
     <h2 class="file-path">{{ file.path }}</h2>

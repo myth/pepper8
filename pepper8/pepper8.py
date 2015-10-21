@@ -13,7 +13,7 @@ from parser import Parser
 
 def main(arguments=None):
 
-    args = arguments or argv
+    args = arguments or argv[1:]
 
     fileparser = None
     argparser = argparse.ArgumentParser(
@@ -42,7 +42,7 @@ def main(arguments=None):
     )
 
     # Fetch the provided arguments from sys.argv
-    args = argparser.parse_args()
+    args = argparser.parse_args(args)
 
     if args.filename:
         try:
@@ -67,7 +67,7 @@ def main(arguments=None):
 
     # Generate the HTML report to output_file if not None, else print to stdout
     generator = HtmlGenerator(fileparser)
-    generator.generate(output_file=args.output_file)
+    generator.analyze(output_file=args.output_file)
 
 if __name__ == '__main__':
     main()

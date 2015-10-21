@@ -1,6 +1,14 @@
 pepper8
 =======
 
+.. image:: https://img.shields.io/pypi/v/pepper8.svg
+    :alt: Pepper8 Version
+    :target: https://pypi.python.org/pypi/pepper8
+    
+.. image:: https://img.shields.io/pypi/dm/pepper8.svg
+    :alt: Pepper8 Downloads
+    :target: https://pypi.python.org/pypi/pepper8
+
 Transform pep8 or flake8 output to HTML
 ---------------------------------------
 
@@ -69,15 +77,10 @@ Pepper8 PEP 8 HTML Report
     :align: center
 
 
-
-
 TeamCity custom chart data using custom buildStatistics messages if run under TeamCity
-
-
 
 
 .. image:: https://cloud.githubusercontent.com/assets/2415878/10596726/7a2f43aa-76e7-11e5-8833-429197b45025.png
     :alt: Custom TeamCity Flake8/PEP8 Warning/Error build metrics
     :align: center
-    
     

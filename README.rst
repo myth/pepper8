@@ -5,10 +5,6 @@ pepper8
     :alt: Pepper8 Version
     :target: https://pypi.python.org/pypi/pepper8
     
-.. image:: https://img.shields.io/pypi/dm/pepper8.svg
-    :alt: Pepper8 Downloads
-    :target: https://pypi.python.org/pypi/pepper8
-    
 .. image:: https://requires.io/github/myth/pepper8/requirements.svg?branch=master
      :target: https://requires.io/github/myth/pepper8/requirements/?branch=master
      :alt: Requirements Status

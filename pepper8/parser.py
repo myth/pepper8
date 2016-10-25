@@ -5,7 +5,7 @@
 import re
 
 POSITION = re.compile('^[\d]+$')
-ERROR_CODE = re.compile('^[eEfFnNwW][0-9]{3,4}$')
+ERROR_CODE = re.compile('^[a-zA-Z][0-9]{3,4}$')
 FILEPATH = re.compile('[\S\s]+\.py$')
 
 

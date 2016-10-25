@@ -19,6 +19,7 @@ class ResultContainer(object):
         :param code: The PEP 8 error code
         :param line: The line number of the reported error
         :param char: Line location of first offending character
+        :param description: The human readable description of the thrown error/warning
         """
 
         if code not in self.violations:

@@ -32,9 +32,7 @@ class HtmlGenerator(object):
         self.files = {}
         self.total_errors = 0
         self.total_warnings = 0
-        self.total_flakes = 0
-        self.total_naming = 0
-        self.total_complexity = 0
+        self.total_other = 0
         self.violations = {}
 
     def analyze(self, output_file=None):
@@ -96,13 +94,11 @@ class HtmlGenerator(object):
                     files=sorted(self.files.values(), key=lambda x: x.path),
                     total_warnings=self.total_warnings,
                     total_errors=self.total_errors,
-                    total_naming=self.total_naming,
-                    total_flakes=self.total_flakes,
-                    total_complexity=self.total_complexity,
+                    total_other=self.total_other,
                     violations=sorted(
                         ((code, count) for code, count in self.violations.items()),
                         key=lambda x: x[1],
-                        reverse=True
+                        reverse=True,
                     )
                 )
             )
@@ -126,14 +122,10 @@ class HtmlGenerator(object):
 
             if 'E' in code.upper():
                 self.total_errors += file_result.violations[code]
-            if 'W' in code.upper():
+            elif 'W' in code.upper():
                 self.total_warnings += file_result.violations[code]
-            elif 'F' in code.upper():
-                self.total_flakes += file_result.violations[code]
-            elif 'N' in code.upper():
-                self.total_naming += file_result.violations[code]
-            elif 'C' in code.upper():
-                self.total_complexity += file_result.violations[code]
+            else:
+                self.total_other += file_result.violations[code]
 
     def report_build_messages(self):
         """

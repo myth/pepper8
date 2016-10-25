@@ -7,10 +7,9 @@ from os import fstat
 from stat import S_ISFIFO, S_ISREG
 from sys import stdin, stderr, exit, argv
 
+from pepper8 import VERSION
 from pepper8.generator import HtmlGenerator
 from pepper8.parser import Parser
-
-VERSION = '1.1.0'
 
 
 def main(arguments=None):

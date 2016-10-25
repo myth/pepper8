@@ -8,11 +8,11 @@ install:
 	@echo "[i] Installing..."
 	@python setup.py install
 
-publish: clean build
+publish: build
 	@echo "[i] Publishing..."
 	@twine upload dist/*
 
-build: dev
+build: clean dev
 	@echo "[i] Building..."
 	@python setup.py sdist bdist_wheel
 

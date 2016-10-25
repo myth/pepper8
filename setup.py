@@ -3,7 +3,7 @@
 import os
 import sys
 
-from pepper8.main import VERSION
+from pepper8 import VERSION
 
 __version__ = VERSION
 

@@ -8,7 +8,7 @@ install:
 	@echo "[i] Installing..."
 	@python setup.py install
 
-publish: build
+publish: clean build
 	@echo "[i] Publishing..."
 	@twine upload dist/*
 

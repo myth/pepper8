@@ -88,6 +88,10 @@ TeamCity custom chart data using custom buildStatistics messages if run under Te
 Changelog
 =========
 
+1.1.1
+-----
+No functional changes
+
 1.1.0
 -----
 Expand pepper8 to account for all possible alphanumeric

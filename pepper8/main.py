@@ -10,7 +10,7 @@ from sys import stdin, stderr, exit, argv
 from pepper8.generator import HtmlGenerator
 from pepper8.parser import Parser
 
-VERSION = '1.0.4'
+VERSION = '1.1.0'
 
 
 def main(arguments=None):

@@ -88,6 +88,12 @@ TeamCity custom chart data using custom buildStatistics messages if run under Te
 Changelog
 =========
 
+1.1.0
+-----
+Expand pepper8 to account for all possible alphanumeric
+violation codes on a [A-Z][0-9]{3,4} format.
+Updated broken link to flake8-readthedocs.
+
 1.0.4
 -----
 Fixed a Python 2 and 3 compatibility issue.

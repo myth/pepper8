@@ -2,4 +2,5 @@ pipeline:
     test:
         image: python:3-slim
         commands:
+            - pip install tox
             - tox

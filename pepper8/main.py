@@ -5,7 +5,7 @@
 import argparse
 from os import fstat
 from stat import S_ISFIFO, S_ISREG
-from sys import stdin, stderr, exit, argv
+from sys import argv, exit, stderr, stdin
 
 from pepper8 import VERSION
 from pepper8.generator import HtmlGenerator
@@ -77,6 +77,7 @@ def main(arguments=None):
     # Generate the HTML report to output_file if not None, else print to stdout
     generator = HtmlGenerator(fileparser)
     generator.analyze(output_file=args.output_file)
+
 
 if __name__ == '__main__':
     main()

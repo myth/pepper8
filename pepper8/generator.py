@@ -3,10 +3,9 @@
 # Created by 'myth' on 10/19/15
 
 import os
-from sys import stdout, stderr
+from sys import stderr, stdout
 
 from jinja2 import Template
-
 from pepper8.models import FileResult
 from pepper8.parser import Parser
 

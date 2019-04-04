@@ -1,6 +1,9 @@
-pipeline:
-    test:
-        image: python:3-slim
-        commands:
-            - pip install tox
-            - tox
+kind: pipeline
+name: test
+
+steps:
+- name: lint
+  image: python:3-slim
+  commands:
+  - pip install tox
+  - tox
